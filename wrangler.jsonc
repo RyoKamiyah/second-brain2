@@ -1,0 +1,45 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "second-brain2",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-06-17",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "second-brain-db","database_id": "fbeb556d-dc52-41bb-a012-e52342991ea4"
+		}
+	],
+	"vectorize": [
+		{
+			"binding": "VECTORIZE",
+			"index_name": "second-brain-vectors",
+			"dimensions": "${VECTORIZE_DIMENSIONS}",
+			"metric": "${VECTORIZE_METRIC}"
+		}
+	],
+	"ai": {
+		"binding": "AI"
+	},
+	"kv_namespaces": [
+		{
+			"binding": "OAUTH_KV","id": "c531cdc4094e416fabce73e29f5c57f2"
+		}
+	],
+	"vars": {
+		"VECTORIZE_GRACE_MS": "300000"
+	},
+	"secrets": {
+		"required": ["AUTH_TOKEN"]
+	},
+	"assets": {
+		"directory": "./public"
+	},
+	"triggers": {
+		"crons": [
+			"0 1 * * *"
+		]
+	}
+}
